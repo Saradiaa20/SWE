@@ -1,0 +1,192 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F7FFF7; /* Light background */
+    color: #1A535C; /* Dark text */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #FF6F61; /* Coral for headings */
+    margin-bottom: 20px;
+}
+
+a {
+    color: #4ECDC4; /* Turquoise for links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF6F61; /* Coral on hover */
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #1A535C; /* Dark teal */
+    color: #F7FFF7; /* Light text */
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Navigation */
+nav {
+    background-color: #4ECDC4; /* Turquoise */
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    color: #1A535C; /* Dark teal */
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #FF6F61; /* Coral on hover */
+}
+
+/* Meal Cards */
+.meal-card {
+    background-color: #FFFFFF; /* White */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.meal-card:hover {
+    transform: translateY(-5px);
+}
+
+.meal-card h3 {
+    margin-top: 0;
+    color: #1A535C; /* Dark teal */
+}
+
+.meal-card p {
+    color: #4ECDC4; /* Turquoise */
+}
+
+.meal-card a {
+    display: inline-block;
+    background-color: #4ECDC4; /* Turquoise */
+    color: #FFFFFF; /* White */
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.meal-card a:hover {
+    background-color: #FF6F61; /* Coral */
+}
+
+/* Forms */
+form {
+    background-color: #FFFFFF; /* White */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #1A535C; /* Dark teal */
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    background-color: #4ECDC4; /* Turquoise */
+    color: #FFFFFF; /* White */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #FF6F61; /* Coral */
+}
+
+/* Search Results */
+.search-results {
+    margin-top: 20px;
+}
+
+/* Meal Details */
+.meal-details {
+    background-color: #FFFFFF; /* White */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.meal-details h2 {
+    color: #1A535C; /* Dark teal */
+}
+
+.meal-details p {
+    color: #4ECDC4; /* Turquoise */
+}
+
+/* User Account Pages */
+.login-form, .register-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.login-form h1, .register-form h1 {
+    color: #1A535C; /* Dark teal */
+}
+
+/* Footer */
+footer {
+    background-color: #1A535C; /* Dark teal */
+    color: #F7FFF7; /* Light text */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .meal-card {
+        padding: 15px;
+    }
+
+    .meal-details {
+        padding: 15px;
+    }
+}
