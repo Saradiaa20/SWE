@@ -20,7 +20,7 @@
                 echo "<div class='meal-card'>
                         <h3>{$row['name']}</h3>
                         <p>{$row['description']}</p>
-                        <a href='meal.php?id={$row['id']}'>View Recipe</a>
+                        <a href='meal.php?ID={$row['ID']}'>View Recipe</a>
                       </div>";
             }
         } else {
