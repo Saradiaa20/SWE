@@ -1,6 +1,4 @@
-<?php 
-session_start();
-include "db.php"; 
+<?php include "db.php"; 
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
