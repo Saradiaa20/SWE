@@ -1,6 +1,6 @@
 <?php include 'db.php'; 
 $ID = $_GET['ID'];
-$sql = "SELECT * FROM meals WHERE ID = $ID";
+$sql = "SELECT * FROM meals WHERE meal_ID = $ID";
 $result = $conn->query($sql);
 $meal = $result->fetch_assoc();
 ?>
