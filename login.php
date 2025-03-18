@@ -90,11 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" name="first_name" required placeholder="First Name" />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" name="last_name" required placeholder="Last Name" />
+              <input type="text" name="name" required placeholder="Name" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
@@ -106,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="input-field">
               <i class="fas fa-phone"></i>
-              <input type="tel" name="phone" pattern="[0-9]{11}" required placeholder="Mobile">
+              <input type="text" name="diet" required placeholder="Diet Type">
             </div>
             <input type="submit" name="signup" value="Sign up" class="btn" />
           </form>
