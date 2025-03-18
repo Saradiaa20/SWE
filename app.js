@@ -7,3 +7,15 @@ sign_up_btn.addEventListener("click", () => {
 sign_in_btn.addEventListener("click", () => {
   container.classList.remove("sign-up-mode");
 });
+
+// const signUpButton = document.getElementById('sign-up-btn');
+// const signInButton = document.getElementById('sign-in-btn');
+
+
+// signUpButton.addEventListener('click', () => {
+//     container.classList.add('sign-up-mode');
+// });
+
+// signInButton.addEventListener('click', () => {
+//     container.classList.remove('sign-up-mode');
+// });
