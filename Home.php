@@ -1,11 +1,24 @@
-<?php include 'db.php'; 
+<?php include 'db.php';
+session_start(); 
+// // Ensure the user is logged in
+// if (!isset($_SESSION["id"])) {
+//     header("Location: login.php"); // Redirect to login if not logged in
+//     exit();
+// }
 
+// // Get the user ID from the session
+// $id = $_SESSION["id"];
 
-session_start(); // Start the session
+// Query to get the logged-in user's details
+$conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+// $sql = "SELECT * FROM users WHERE id = '$id'";
 
 // Check if the user is logged in
-if (isset($_SESSION['username'])) {
-    $welcomeMessage = "Welcome, " . htmlspecialchars($_SESSION['username']) . "!";
+if (isset($_SESSION['id'])) {
+    $welcomeMessage = "Welcome, " . htmlspecialchars($_SESSION['name']) . "!";
 } else {
     $welcomeMessage = "Welcome, Guest!";
 }
@@ -292,11 +305,12 @@ footer p {
 <body>
     <nav>
         <a href="Home.php">Home</a>
-        <a href="profile.php">Profile</a>
-        <a href="fav.php">Favorits</a>
+        <a href="profile1.php">Profile</a>
+        <!-- <a href="fav.php">Favorits</a> -->
         <?php if (isset($_SESSION['username'])): ?>
             <a href="logout.php">Logout</a> <!-- Add a logout link for logged-in users -->
         <?php else: ?>
+            <a href="create.php">Sign Up</a>
             <a href="login.php">Login</a>
         <?php endif; ?>
         <div class="search-container">

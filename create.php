@@ -45,11 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 exit;
             } else {
-                $invalidLogin = true;
                 echo "Invalid Password.";
             }
         } else {
-            $invalidLogin = true;
             echo "Invalid Email.";
         }
 
@@ -76,15 +74,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         background-color: rgba(245, 245, 220, 0.664);
       }
     </style>
-    <title>Login</title>
+    <title>Sign up</title>
   </head>
-
+  <body>
   <div class="logincontainer">
         <div class="forms-container">
             <div class="signin-signup">
-                <!-- Sign In Form -->
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="sign-in-form" method="post">
-                    <h2 class="title">Sign in</h2>
+                <!-- Sign Up Form -->
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="sign-up-form" method="post">
+                    <h2 class="title">Sign up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="name" required placeholder="Name" />
+                    </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
                         <input type="email" name="email" required placeholder="Email" />
@@ -93,26 +95,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" required placeholder="Password" />
                     </div>
-                    <input type="submit" name="signin" value="Login" class="btn solid" />
-                    <!-- Hidden "Create Account" Button -->
-                  <div id="create-account-btn" style="display: none;">
-                  <p>Don't have an account? <a href="create.php" class="btn transparent">Create Account</a>
-                  </p>
-                  </div>
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input type="text" name="diet" required placeholder="Diet Type">
+                    </div>
+                    <input type="submit" name="signup" value="Sign up" class="btn" />
                 </form>
-                </div>
-                </div>
-                </div>
-    <script src="app.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const invalidLogin = <?php echo $invalidLogin ? 'true' : 'false'; ?>;
+            </div>
+        </div>
 
-        if (invalidLogin) {
-            // Show the "Create Account" button
-            document.getElementById('create-account-btn').style.display = 'block';
-        }
-    });
-</script>
+       
+    <script src="app.js"></script>
   </body>
 </html>

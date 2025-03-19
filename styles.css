@@ -192,6 +192,12 @@ button:hover {
     color: #1A535C; /* Dark teal */
 }
 
+.logincontainer {
+    width: 50%;
+    margin: 0 auto;
+    background-color: rgba(245, 245, 220, 0.664);
+}
+
 /* Footer */
 footer {
     background-color: #1A535C; /* Dark teal */
