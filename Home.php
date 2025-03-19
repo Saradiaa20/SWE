@@ -1,4 +1,15 @@
-<?php include 'db.php'; ?>
+<?php include 'db.php'; 
+
+
+session_start(); // Start the session
+
+// Check if the user is logged in
+if (isset($_SESSION['username'])) {
+    $welcomeMessage = "Welcome, " . htmlspecialchars($_SESSION['username']) . "!";
+} else {
+    $welcomeMessage = "Welcome, Guest!";
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +29,16 @@ body {
     line-height: 1.6;
 }
 
-h1, h2, h3 {
+h1{
+    text-align: center;
     color: #FF6F61; /* Coral for headings */
     margin-bottom: 20px;
+}
+
+h2, h3 {
+    text-align: left;
+    color: #FF6F61; /* Coral for headings */
+    margin: 20px 40px;
 }
 
 a {
@@ -276,7 +294,11 @@ footer p {
         <a href="Home.php">Home</a>
         <a href="profile.php">Profile</a>
         <a href="fav.php">Favorits</a>
-        <a href="login.php">Login</a>
+        <?php if (isset($_SESSION['username'])): ?>
+            <a href="logout.php">Logout</a> <!-- Add a logout link for logged-in users -->
+        <?php else: ?>
+            <a href="login.php">Login</a>
+        <?php endif; ?>
         <div class="search-container">
             <i class="fas fa-search" id="search-icon"></i>
             <form action="search_results.php" method="GET" id="search-form">
@@ -285,7 +307,8 @@ footer p {
             </form>
         </div>
     </nav>
-    <h1>Welcome to Your Meal Planner!</h1>
+    <h1><?php echo $welcomeMessage; ?></h1>
+    <br><br>
     <section class="recommendations">
         <h2>Today's Recommendations</h2>
         <div class="swiper mySwiper">
@@ -293,7 +316,7 @@ footer p {
         <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30"
         centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
         <?php
-        $sql = "SELECT * FROM meals LIMIT 5";
+        $sql = "SELECT * FROM meals LIMIT 4";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -310,6 +333,40 @@ footer p {
         ?>
         </swiper-container>
         </div>
+        
+        <div class="swiper-pagination"></div>
+            <!-- Add Navigation Buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <br><br><br><br>
+    <section class="recommendations">
+        <h2>Pasta Dishes</h2>
+        <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+        <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30"
+        centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+        <?php
+        $sql = "SELECT * FROM meals WHERE description LIKE '%pasta%'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='meal-card'>
+                <img src='img/" . $row['image'] . "' alt='Meal Image' class='meal-image'>
+                        <h3>{$row['name']}</h3>
+                        <p>{$row['description']}</p>
+                        <a href='meal.php?ID={$row['meal_ID']}'>View Recipe</a>
+                      </div>";
+            }
+        } else {
+            echo "<p>No meals found.</p>";
+        }
+        ?>
+        </swiper-container>
+        </div>
+        
         <div class="swiper-pagination"></div>
             <!-- Add Navigation Buttons -->
             <div class="swiper-button-next"></div>
