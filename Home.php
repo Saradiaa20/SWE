@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 // $sql = "SELECT * FROM users WHERE id = '$id'";
 
 // Check if the user is logged in
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['name'])) {
     $welcomeMessage = "Welcome, " . htmlspecialchars($_SESSION['name']) . "!";
 } else {
     $welcomeMessage = "Welcome, Guest!";

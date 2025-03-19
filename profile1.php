@@ -1,10 +1,9 @@
-<?php 
+<?php include_once "db.php"; 
 session_start();
-include_once "includes/dbh.inc.php"; 
 
 // Ensure the user is logged in
 if (!isset($_SESSION["id"])) {
-    header("Location: signinup.php"); // Redirect to login if not logged in
+    header("Location: login.php"); // Redirect to login if not logged in
     exit();
 }
 
