@@ -286,11 +286,15 @@ footer p {
 </head>
 <body>
 <nav>
-        <a href="Home.php">Home</a>
+        <?php if (isset($_SESSION['name'])=="admin"): ?>
+            <a href="admin.php">Home</a>
+        <?php else: ?>
+            <a href="Home.php">Home</a>
+        <?php endif; ?>
         <a href="profile1.php">Profile</a>
-        <!-- <a href="fav.php">Favorits</a> -->
-        <?php if (isset($_SESSION['username'])): ?>
-            <a href="logout.php">Logout</a> <!-- Add a logout link for logged-in users -->
+        <?php if (isset($_SESSION['name'])): ?>
+            <a href="fav.php">Favorits</a>
+            <a href="logout.php">Logout</a>
         <?php else: ?>
             <a href="create.php">Sign Up</a>
             <a href="login.php">Login</a>

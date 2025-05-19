@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             echo "Registration successful! You can now sign in.";
+            header("Location: login.php?login=success");
         } else {
             echo "Error: " . $stmt->error;
         }
@@ -39,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if($_SESSION["ID"] == 1){
                   header("Location: AdminPage.php?login=success");
                 }
-                else if($_SESSION["ID"] >= 2){
+                elseif($_SESSION["ID"] >= 2){
                   header("Location: Home.php?login=success");
                 }
                 

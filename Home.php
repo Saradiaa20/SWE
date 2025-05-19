@@ -1,28 +1,45 @@
-<?php include 'db.php';
-session_start(); 
-// // Ensure the user is logged in
-// if (!isset($_SESSION["id"])) {
-//     header("Location: login.php"); // Redirect to login if not logged in
-//     exit();
-// }
+<?php
+include_once 'db.php';
+session_start();
 
-// // Get the user ID from the session
-// $id = $_SESSION["id"];
+// Check if session already has ID
+if (!isset($_SESSION["id"])) {
+    // Redirect to login if not logged in
+    header("Location: login.php");
+    exit();
+}
 
-// Query to get the logged-in user's details
+
+$id = $_SESSION["id"];
+
+// Connect to DB
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// $sql = "SELECT * FROM users WHERE id = '$id'";
 
-// Check if the user is logged in
+// Get user data
+$sql = "SELECT * FROM users WHERE id = '$id'";
+$result = $conn->query($sql);
+
+if ($result && $result->num_rows == 1) {
+    $user = $result->fetch_assoc(); // now $user is an array
+
+    // You can now safely do this
+    $_SESSION["name"] = $user['name']; // store name for greeting
+} else {
+    echo "User not found.";
+    exit();
+}
+
+// Greeting message
 if (isset($_SESSION['name'])) {
     $welcomeMessage = "Welcome, " . htmlspecialchars($_SESSION['name']) . "!";
 } else {
     $welcomeMessage = "Welcome, Guest!";
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -304,11 +321,15 @@ footer p {
 </head>
 <body>
     <nav>
-        <a href="Home.php">Home</a>
+        <?php if (isset($_SESSION['name'])=="admin"): ?>
+            <a href="admin.php">Home</a>
+        <?php else: ?>
+            <a href="Home.php">Home</a>
+        <?php endif; ?>
         <a href="profile1.php">Profile</a>
-        <!-- <a href="fav.php">Favorits</a> -->
-        <?php if (isset($_SESSION['username'])): ?>
-            <a href="logout.php">Logout</a> <!-- Add a logout link for logged-in users -->
+        <?php if (isset($_SESSION['name'])): ?>
+            <a href="fav.php">Favorits</a>
+            <a href="logout.php" style="color: red;">Logout</a> <!-- Add a logout link for logged-in users -->
         <?php else: ?>
             <a href="create.php">Sign Up</a>
             <a href="login.php">Login</a>

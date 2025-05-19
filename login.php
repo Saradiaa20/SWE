@@ -1,4 +1,5 @@
-<?php include "db.php"; 
+<?php include "db.php";
+session_start();
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -11,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
           // Prepare and execute the SQL INSERT statement
           $stmt = $conn->prepare("INSERT INTO users (name, email, password, diet) VALUES (?, ?, ?, ?)");
-          $stmt->bind_param("ssss", $name, $email, $password, $diet); 
+          $stmt->bind_param("ssss", $name, $email, $password, $diet);
 
         if ($stmt->execute()) {
             echo "Registration successful! You can now sign in.";
@@ -32,14 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($row = $result->fetch_assoc()) {
             if (password_verify($password, $row["password"])) {
-                $_SESSION["ID"] = $row["ID"];
+                $_SESSION["id"] = $row["id"];
                 $_SESSION["name"] = $row["name"];
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["diet"] = $row["diet"];
-                if($_SESSION["ID"] == 1){
-                  header("Location: AdminPage.php?login=success");
+                if($_SESSION["id"] == 1){
+                  header("Location: admin.php?login=success");
                 }
-                else if($_SESSION["ID"] >= 2){
+                elseif($_SESSION["id"] >= 2){
                   header("Location: Home.php?login=success");
                 }
                 
