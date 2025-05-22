@@ -95,11 +95,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="password" name="password" required placeholder="Password" />
                     </div>
                     <input type="submit" name="signin" value="Login" class="btn solid" />
+                    <p>Don't have an account? <a href="create.php" class="btn transparent">Create Account</a>
                     <!-- Hidden "Create Account" Button -->
-                  <div id="create-account-btn" style="display: none;">
+                  <!-- <div id="create-account-btn" style="display: none;">
                   <p>Don't have an account? <a href="create.php" class="btn transparent">Create Account</a>
-                  </p>
-                  </div>
+                  </p> -->
+                  <!-- </div> -->
                 </form>
                 </div>
                 </div>

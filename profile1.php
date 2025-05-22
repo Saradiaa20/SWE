@@ -111,13 +111,17 @@ nav a:hover {
 }
 
 /* Search Container */
-div .search-container {
-    width: 10px;
-    position: relative;
+.search-container {
+    margin-left: auto;
     display: flex;
     align-items: center;
-    margin-left: auto; /* Align to the right */
 }
+
+#search-form input {
+    width: 130px;
+    padding: 5px;
+}
+
 
 #search-icon {
     color: #F7FFF7; /* Light text */
@@ -175,6 +179,54 @@ div .search-container {
 .meal-card a:hover {
     background-color: #FF6F61; /* Coral */
 }
+/* Profile Page Container */
+.profile-container {
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Profile Picture Style */
+.profile-picture img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Form Styling */
+#editProfileForm label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+}
+
+#editProfileForm input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#editProfileForm input[type="submit"] {
+    margin-top: 25px;
+    background-color: #4ECDC4;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+#editProfileForm input[type="submit"]:hover {
+    background-color: #FF6F61;
+}
+
 
 /* Forms */
 form {
@@ -307,8 +359,8 @@ footer p {
             </form>
         </div>
     </nav>
-        <div class="main-content">
-            <h2 class="profileText">Profile Details</h2>
+        <div class="profile-container">
+            <h2 style="color:#FF6F61; margin-bottom:30px;">Profile Details</h2>
             <div class="profile-picture">
 
                 <?php if (!empty($user['image'])): ?>
@@ -336,9 +388,17 @@ footer p {
                 <input type="password" id="password" name="password"  value="<?php echo htmlspecialchars($user["password"]); ?>" required>
                 </label>
                 <br>
-                <label for="diet">Mobile Number:
-                <input type="text" id="diet" name="diet" value="<?php echo htmlspecialchars($user["diet"]); ?>" required>
-                </label>
+                <label for="diet">Diet Type:
+    <select id="diet" name="diet" required>
+        <?php
+        $dietOptions = ['normal', 'vegetarian', 'vegan', 'keto', 'paleo', 'gluten-free', 'low-carb', 'high-protein'];
+        foreach ($dietOptions as $option) {
+            $selected = ($user['diet'] === $option) ? 'selected' : '';
+            echo "<option value=\"$option\" $selected>" . ucfirst($option) . "</option>";
+        }
+        ?>
+    </select>
+</label>
                 <br><br><br>
                 <input type="submit" value="Save Changes">
             </form>

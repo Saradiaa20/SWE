@@ -408,6 +408,74 @@ footer p {
             <div class="swiper-button-prev"></div>
         </div>
     </section>
+
+    <br><br><br><br>
+    <section class="recommendations">
+        <h2>Chicken Dishes</h2>
+        <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+        <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30"
+        centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+        <?php
+        $sql = "SELECT * FROM meals WHERE description LIKE '%chicken%'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='meal-card'>
+                <img src='img/" . $row['image'] . "' alt='Meal Image' class='meal-image'>
+                        <h3>{$row['name']}</h3>
+                        <p>{$row['description']}</p>
+                        <a href='meal.php?ID={$row['meal_ID']}'>View Recipe</a>
+                      </div>";
+            }
+        } else {
+            echo "<p>No meals found.</p>";
+        }
+        ?>
+        </swiper-container>
+        </div>
+        
+        <div class="swiper-pagination"></div>
+            <!-- Add Navigation Buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <br><br><br><br>
+    <section class="recommendations">
+        <h2>Salad Dishes</h2>
+        <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+        <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30"
+        centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+        <?php
+        $sql = "SELECT * FROM meals WHERE description LIKE '%salad%'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class='meal-card'>
+                <img src='img/" . $row['image'] . "' alt='Meal Image' class='meal-image'>
+                        <h3>{$row['name']}</h3>
+                        <p>{$row['description']}</p>
+                        <a href='meal.php?ID={$row['meal_ID']}'>View Recipe</a>
+                      </div>";
+            }
+        } else {
+            echo "<p>No meals found.</p>";
+        }
+        ?>
+        </swiper-container>
+        </div>
+        
+        <div class="swiper-pagination"></div>
+            <!-- Add Navigation Buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+
     <footer>
         <p>&copy; 2025 Meal Planner. All rights reserved.</p>
     </footer>

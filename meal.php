@@ -12,6 +12,8 @@ $meal = $result->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $meal['name']; ?></title>
     <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>/* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
@@ -126,6 +128,34 @@ footer p {
     margin: 0;
 }
 
+.meal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.meal-title {
+    font-size: 2rem;
+    color: #FF6F61;
+    margin: 0;
+}
+
+.heart-button {
+    background: none;
+    border: none;
+    color: #FF6F61;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.heart-button:hover {
+    transform: scale(1.2);
+    color: #e63946;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     header h1 {
@@ -173,7 +203,18 @@ footer p {
             </form>
         </div>
     </nav>
-    <h1><?php echo $meal['name']; ?></h1>
+   <div class="meal-header">
+    <h2 class="meal-title"><?php echo htmlspecialchars($meal['name']); ?></h2>
+    
+    <!-- Heart Button -->
+    <form method="POST" action="add_fav.php" style="margin: 0;">
+        <input type="hidden" name="meal_id" value="<?php echo $meal['meal_ID']; ?>">
+        <button type="submit" class="heart-button" title="Save to Favorites">
+            <i class="fas fa-heart"></i>
+        </button>
+    </form>
+</div>
+
     <div class="meal-details">
         <h2>Ingredients</h2>
         <p><?php echo $meal['ingredients']; ?></p>
@@ -181,11 +222,13 @@ footer p {
         <p><?php echo $meal['recipe']; ?></p>
         <h2>Nutritional Information</h2>
         <p>Calories: <?php echo $meal['calories']; ?></p>
-        <p>Fats: <?php echo $meal['fats']; ?>g</p>
-        <p>Protein: <?php echo $meal['protein']; ?>g</p>
-        <p>Carbs: <?php echo $meal['carbs']; ?>g</p>
+        <p>Fats: <?php echo $meal['fats']; ?></p>
+        <p>Protein: <?php echo $meal['protein']; ?></p>
+        <p>Carbs: <?php echo $meal['carbs']; ?></p>
         <h2>Suitable For</h2>
         <p><?php echo $meal['diet_type']; ?></p>
+        <h2>Serving Amount For</h2>
+        <p><?php echo $meal['serving']; ?></p>
     </div>
     <footer>
         <p>&copy; 2025 Meal Planner. All rights reserved.</p>
